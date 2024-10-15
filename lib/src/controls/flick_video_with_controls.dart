@@ -1,7 +1,7 @@
+import 'package:cached_video_player_plus/cached_video_player_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:provider/provider.dart';
-import 'package:video_player/video_player.dart';
 
 /// Default Video with Controls.
 ///
@@ -35,7 +35,7 @@ class FlickVideoWithControls extends StatefulWidget {
       fontSize: 12,
     ),
     this.aspectRatioWhenLoading = 16 / 9,
-    this.willVideoPlayerControllerChange = true,
+    this.willCachedVideoPlayerPlusControllerChange = true,
     this.closedCaptionTextStyle = const TextStyle(
       color: Colors.white,
       fontSize: 12,
@@ -82,7 +82,7 @@ class FlickVideoWithControls extends StatefulWidget {
   final double aspectRatioWhenLoading;
 
   /// If false videoPlayerController will not be updated.
-  final bool willVideoPlayerControllerChange;
+  final bool willCachedVideoPlayerPlusControllerChange;
 
   get videoPlayerController => null;
 
@@ -91,12 +91,12 @@ class FlickVideoWithControls extends StatefulWidget {
 }
 
 class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
-  VideoPlayerController? _videoPlayerController;
+  CachedVideoPlayerPlusController? _videoPlayerController;
   @override
   void didChangeDependencies() {
-    VideoPlayerController? newController =
+    CachedVideoPlayerPlusController? newController =
         Provider.of<FlickVideoManager>(context).videoPlayerController;
-    if ((widget.willVideoPlayerControllerChange &&
+    if ((widget.willCachedVideoPlayerPlusControllerChange &&
             _videoPlayerController != newController) ||
         _videoPlayerController == null) {
       _videoPlayerController = newController;

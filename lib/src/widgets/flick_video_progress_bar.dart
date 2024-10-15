@@ -1,8 +1,8 @@
+import 'package:cached_video_player_plus/cached_video_player_plus.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:video_player/video_player.dart';
 
 /// Renders progress bar for the video using custom paint.
 class FlickVideoProgressBar extends StatelessWidget {
@@ -25,7 +25,8 @@ class FlickVideoProgressBar extends StatelessWidget {
     FlickControlManager controlManager =
         Provider.of<FlickControlManager>(context);
     FlickVideoManager videoManager = Provider.of<FlickVideoManager>(context);
-    VideoPlayerValue? videoPlayerValue = videoManager.videoPlayerValue;
+    CachedVideoPlayerPlusValue? videoPlayerValue =
+        videoManager.videoPlayerValue;
 
     if (videoPlayerValue == null) return Container();
 
@@ -97,7 +98,7 @@ class FlickVideoProgressBar extends StatelessWidget {
 class _ProgressBarPainter extends CustomPainter {
   _ProgressBarPainter(this.value, {this.flickProgressBarSettings});
 
-  VideoPlayerValue value;
+  CachedVideoPlayerPlusValue value;
   FlickProgressBarSettings? flickProgressBarSettings;
 
   @override

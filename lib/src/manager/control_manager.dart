@@ -27,7 +27,7 @@ class FlickControlManager extends ChangeNotifier {
   /// Is subtitle visible.
   bool get isSub => _isSub;
 
-  VideoPlayerController? get _videoPlayerController =>
+  CachedVideoPlayerPlusController? get _videoPlayerController =>
       _flickManager.flickVideoManager!.videoPlayerController;
   bool get _isPlaying => _flickManager.flickVideoManager!.isPlaying;
 
